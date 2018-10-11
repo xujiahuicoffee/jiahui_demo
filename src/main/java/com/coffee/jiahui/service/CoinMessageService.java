@@ -6,5 +6,5 @@ import com.coffee.jiahui.domain.CoinMessage;
 
 public interface CoinMessageService{
 
-	List<CoinMessage> listAllCoinMessage();
+	List<CoinMessage> listAllCoinMessage(String name);
 }

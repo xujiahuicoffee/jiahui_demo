@@ -3,6 +3,7 @@ package com.coffee.jiahui.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.coffee.jiahui.domain.CoinMessage;
@@ -18,7 +19,8 @@ public class CoinMessageServiceImpl implements CoinMessageService{
 	private CoinMessageMapper coinMessageMapper;
 	
 	@Override
-	public List<CoinMessage> listAllCoinMessage() {
+	@Cacheable(cacheNames = "GoodsType", key = "#root.methodName + #name")
+	public List<CoinMessage> listAllCoinMessage(String name) {
 		List<CoinMessage> list = coinMessageMapper.selectAll();
 		return list;
 	}
