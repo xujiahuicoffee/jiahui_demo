@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="ehcache.xsd">
-    <!--timeToIdleSeconds 当缓存闲置n秒后销毁 -->
-    <!--timeToLiveSeconds 当缓存存活n秒后销毁 -->
-    <!-- 缓存配置 
+    <!-- timeToIdleSeconds 当缓存闲置n秒后销毁
+    timeToLiveSeconds 当缓存存活n秒后销毁
+    缓存配置 
         name:缓存名称。 
         maxElementsInMemory：缓存最大个数。 
         eternal:对象是否永久有效，一但设置了，timeout将不起作用。 
@@ -35,10 +35,10 @@ LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU�
         <persistence strategy="localTempSwap" />
     </defaultCache>
 
-    <!-- 测试 -->
+   <!--  测试 -->
     <cache name="GoodsType" 
         eternal="false" 
-        maxElementsInMemory="1" 
+        maxElementsInMemory="10000" 
         timeToIdleSeconds="2400"
         timeToLiveSeconds="120" 
         maxEntriesLocalHeap="10000"
