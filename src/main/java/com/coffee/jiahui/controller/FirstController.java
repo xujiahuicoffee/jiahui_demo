@@ -2,6 +2,8 @@ package com.coffee.jiahui.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
+import com.coffee.jiahui.config.web.my.MySelf;
 import com.coffee.jiahui.domain.CoinMessage;
 import com.coffee.jiahui.service.CoinMessageService;
 import com.github.pagehelper.PageHelper;
@@ -28,6 +31,11 @@ public class FirstController {
 	@Qualifier("oneCacheManager")
 	private CacheManager cacheManager;
 	
+	/**
+	 * 配置数据库连接池 的测试controller
+	 * @param name
+	 * @return
+	 */
 	@RequestMapping(value = "/getCount", method = RequestMethod.GET)
 	public String getCoinMessageCount(String name){
 		List<CoinMessage> list = coinMessageService.listAllCoinMessage(name);
@@ -35,6 +43,13 @@ public class FirstController {
 		
 	}
 	
+	/**
+	 * 配置tkmybatis实现分页、配置ehcache缓存的测试controller
+	 * @param pn
+	 * @param ps
+	 * @param name
+	 * @return
+	 */
 	@RequestMapping(value = "/getCoinMessage", method = RequestMethod.GET)
 	public JSONObject getCoinMessage(int pn, int ps, String name){
 		PageHelper.startPage(pn, ps);
@@ -52,6 +67,12 @@ public class FirstController {
 		return json;
 	}
 	
+	/**
+	 * 缓存相关
+	 * @param cacheKey
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/getCacheElement", method = RequestMethod.GET)
 	public String getCacheElement(String cacheKey) throws Exception {
 		
@@ -64,5 +85,15 @@ public class FirstController {
 		}
 		Object obj = e.getObjectValue();
 		return obj.toString();
+	}
+	
+	@RequestMapping(value = "/whoIAm",method = RequestMethod.GET)
+	@MySelf(name = "xujiahiu", homeTown = "QianDaoHu", age = 24)
+	public JSONObject whoIAm(HttpServletRequest request){
+		JSONObject json = new JSONObject();
+		json.put("name", request.getAttribute("name"));
+		json.put("homeTown", request.getAttribute("homeTown"));
+		json.put("age", request.getAttribute("age"));
+		return json;		
 	}
 }

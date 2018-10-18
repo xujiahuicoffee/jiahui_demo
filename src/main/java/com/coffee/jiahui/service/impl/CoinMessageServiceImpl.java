@@ -10,7 +10,6 @@ import com.coffee.jiahui.domain.CoinMessage;
 import com.coffee.jiahui.mapper.CoinMessageMapper;
 import com.coffee.jiahui.service.CoinMessageService;
 
-//import tk.mybatis.spring.annotation.MapperScan;
 
 @Service
 public class CoinMessageServiceImpl implements CoinMessageService{
