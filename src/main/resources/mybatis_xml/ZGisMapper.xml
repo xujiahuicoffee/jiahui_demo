@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.coffee.jiahui.mapper.ZGisMapper">
+	<!-- <resultMap type="com.xujiahui.jiahui.domain.People" id="baseResult">
+		<id property="id" column="id" jdbcType="INT"/>
+		<result property="name" column="name" jdbcType="VARCHAR"/>
+		<result property="location" column="location" jdbcType="GEOMETRY"/>
+	</resultMap> -->
+	
+	<insert id="insertData" parameterType="map">
+		INSERT INTO z_gis(name,gis) VALUES(#{name, jdbcType=VARCHAR},geomfromtext('point(${jd} ${wd})'))
+	</insert>
+</mapper>
