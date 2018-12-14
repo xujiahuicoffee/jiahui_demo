@@ -87,6 +87,11 @@ public class FirstController {
 		return obj.toString();
 	}
 	
+	/**
+	 * AOP ceshi
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "/whoIAm",method = RequestMethod.GET)
 	@MySelf(name = "xujiahiu", homeTown = "QianDaoHu", age = 24)
 	public JSONObject whoIAm(HttpServletRequest request){
@@ -96,4 +101,16 @@ public class FirstController {
 		json.put("age", request.getAttribute("age"));
 		return json;		
 	}
+	
+	
+	/**
+	 * 过滤器测试
+	 * @return
+	 */
+	@RequestMapping(value = "/testFilter",method = RequestMethod.GET)
+	public String testFilter(){	
+		return "hello world!";		
+	}
+	
+	
 }
