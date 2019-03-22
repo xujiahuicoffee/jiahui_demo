@@ -17,9 +17,9 @@ import com.coffee.jiahui.service.CoinMessageService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
-import net.sf.ehcache.Cache;
-import net.sf.ehcache.CacheManager;
-import net.sf.ehcache.Element;
+//import net.sf.ehcache.Cache;
+//import net.sf.ehcache.CacheManager;
+//import net.sf.ehcache.Element;
 
 @RestController
 public class FirstController {
@@ -27,9 +27,9 @@ public class FirstController {
 	@Autowired
 	private CoinMessageService coinMessageService;
 	
-	@Autowired
-	@Qualifier("oneCacheManager")
-	private CacheManager cacheManager;
+//	@Autowired
+//	@Qualifier("oneCacheManager")
+//	private CacheManager cacheManager;
 	
 	/**
 	 * 配置数据库连接池 的测试controller
@@ -73,19 +73,19 @@ public class FirstController {
 	 * @return
 	 * @throws Exception
 	 */
-	@RequestMapping(value = "/getCacheElement", method = RequestMethod.GET)
-	public String getCacheElement(String cacheKey) throws Exception {
-		
-		JSONObject returnJson = new JSONObject();		
-		Cache cache = cacheManager.getCache("GoodsType");
-		Element e = cache.get(cacheKey);
-		if (e == null) {
-			returnJson.put("message", "没有缓存");
-			return returnJson.toString();
-		}
-		Object obj = e.getObjectValue();
-		return obj.toString();
-	}
+//	@RequestMapping(value = "/getCacheElement", method = RequestMethod.GET)
+//	public String getCacheElement(String cacheKey) throws Exception {
+//		
+//		JSONObject returnJson = new JSONObject();		
+//		Cache cache = cacheManager.getCache("GoodsType");
+//		Element e = cache.get(cacheKey);
+//		if (e == null) {
+//			returnJson.put("message", "没有缓存");
+//			return returnJson.toString();
+//		}
+//		Object obj = e.getObjectValue();
+//		return obj.toString();
+//	}
 	
 	/**
 	 * AOP ceshi
