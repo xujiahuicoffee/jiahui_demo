@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ResponseBody
 public class ExceptionsHandler {
 
-	@ExceptionHandler(RuntimeException.class)
-	public String RuntimeExceptionHandler(RuntimeException e) {
-		return "运行时异常";
-	}
+//	@ExceptionHandler(RuntimeException.class)
+//	public String RuntimeExceptionHandler(RuntimeException e) {
+//		return "运行时异常";
+//	}
 	
 	@ExceptionHandler(IOException.class)
 	public String IoExceptionHandler(IOException e) {
