@@ -22,7 +22,7 @@ public class TransactionalTestController {
 	@RequestMapping(value = "/test1", method = RequestMethod.GET)
 	public String test1(String name) {
 		studentMessageService.insertStudentMessage1(name);
-		return "success";
+		return "success！";
 	}
 	
 	@RequestMapping(value = "/test2", method = RequestMethod.GET)
